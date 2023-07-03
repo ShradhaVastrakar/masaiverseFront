@@ -1,18 +1,19 @@
-let page = 1
+
 let token = localStorage.getItem("token")
 let bag = []
 let url = "https://masaiback-git-main-shradhavastrakar.vercel.app"
 
 
-fetchedData();
+fetchedData(1,5);
 
 
-async function fetchedData() {
+async function fetchedData(page,limit) {
     try {
-      let data = await fetch(`${url}/users?_page=${page}&_limit=5`, {
+      let data = await fetch(`${url}/users?_page=${page}&_limit=${limit}`, {
         method: "GET",
       });
       if (data.ok == true) {
+        createbtn(data.headers.get("X-Total-count"))
         let res = await data.json();
         bag = res
         renderData(res)
@@ -25,6 +26,18 @@ async function fetchedData() {
   }
 
 
+  let pageid = document.getElementById("page-id")
+
+  function createbtn(total_page){
+    // total_page=Math.floor(total_page/5)  
+    console.log(total_page);
+    let data=""
+    for(let i=1;i<=total_page;i++){
+       data+=`<button class="paginate_btn">${i}</button>`
+
+    }
+    pageid.innerHTML=data
+  }
 
   function renderData(data){
     let container=document.querySelector("#container")
