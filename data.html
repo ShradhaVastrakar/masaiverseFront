@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Page</title>
+</head>
+<link rel="stylesheet" href="./styles/data.css">
+<body>
+    <button class="admin-dash" onclick="logout()">Logout</button>
+    <h1 class="head">Details of all the users attending MasaiVerse</h1>
+    
+    <div id="sorting">
+        <select name="" id="sort">
+            <option value="">Sort by Age</option>
+            <option value="asc">ASC</option>
+            <option value="desc">DESC</option>
+            </select>
+    </div>
+    <div id="filtering">
+        <select name="" id="filter">
+            <option value="">Filter by Profession</option>
+            <option value="FSD">FSD</option>
+            <option value="Frontend">Frontend</option>
+            <option value="Backend">Backend</option>
+            </select>
+    </div>
+
+    <div id="searching">
+        <input type="text" placeholder="Enter name to search" id="search">
+        <button id="searchbtn">Search</button>
+    </div>
+    <div id="container">
+        <!-- //append here -->
+    </div>
+</body>
+<script src="./scripts/data.js"></script>
+</html>

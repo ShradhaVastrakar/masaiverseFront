@@ -1,0 +1,28 @@
+
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+th,td{
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th{
+    background-color: #bf6d6d;
+    font-weight: bold;
+}
+
+.admin-dash{
+    margin-left: 90%;
+    color: white;
+    background-color: #ce2a7f;
+    border-radius: 2%;
+    padding: 3px;
+    text-decoration: none;
+    cursor: pointer;
+  }

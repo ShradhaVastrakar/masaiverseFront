@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+</head>
+<body>
+    <h1 class="index_head"> WELCOME TO MASAIVERSE EVENT</h1>
+
+    <form id="edit-form">
+        <input type="text" placeholder="Enter Name" id="name" class="login_input" required ><br>
+        <input type="number" placeholder="Enter Age" id="age" class="login_input" required ><br>
+        <input type="text" placeholder="Enter Place" id="place" class="login_input" required ><br>
+        <input type="text" placeholder="Upload Image" id="image" class="login_input" required ><br>
+        <select name="" id="batch" class="login_input">
+            <option value="">Select Batch</option>
+            <option value="web13">Web-13</option>
+            <option value="web14">Web-14</option>
+            <option value="web15">Web-15</option>
+        </select><br>
+        <select name="" id="profession" class="login_input">
+            <option value="">Select Profession</option>
+            <option value="FSD">FSD</option>
+            <option value="Frontend">Frontend</option>
+            <option value="Backend">Backend</option>
+        </select><br>
+        <input type="submit" value="submit" class="login_btn">
+    </form>
+    <button onclick="goBack()">Go back</button>
+</body>
+<script>
+     let API_URL = 'https://masaiback-git-main-shradhavastrakar.vercel.app';
+    const urlParams = new URLSearchParams(window.location.search);
+    const userId = urlParams.get('id');
+
+    
+    async function fetchUserById(userId) {
+      try {
+        const response = await fetch(`${API_URL}/users/${userId}`);
+        const user = await response.json();
+
+        document.getElementById('name').value = user.name;
+        document.getElementById('image').value = user.image;
+        document.getElementById('age').value = user.age;
+        document.getElementById('place').value = user.place;
+        document.getElementById('profession').value = user.profession;
+        document.getElementById('batch').value = user.batch;
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while fetching the user');
+      }
+    }
+
+    fetchUserById(userId);
+
+    // Function to handle form submission for updating user details
+    document.getElementById('edit-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const updateduser = {
+        name: document.getElementById('name').value,
+        image: document.getElementById('image').value,
+        age: document.getElementById('age').value,
+        place: document.getElementById('place').value,
+        profession: document.getElementById('profession').value,
+        batch: document.getElementById('batch').value,
+     
+      };
+
+      try {
+        const response = await fetch(`${API_URL}/users/${userId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(updateduser)
+        });
+
+        if (response.ok) {
+          alert('user updated successfully');
+          // Redirect back to the user's page after successful update
+          window.location.href = "data.html";
+        } else {
+          alert('Failed to update the user');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while updating the user');
+      }
+    });
+
+    function goBack() {
+      window.location.href = "data.html"
+    }
+</script>
+</html>

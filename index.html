@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<link rel="stylesheet" href="./styles/index.css">
+<body>
+     <nav>
+        
+        <div id="homePage-navbar">
+            <div><a href="./admin.html" style="text-decoration: none; color: rgb(220, 245, 245); ">Admin Section</a></div>
+            <div><a href="./index.html" style="text-decoration: none; color: rgb(194, 235, 235);">User Section</a>
+            </div>
+            
+    </nav>
+    <h1 class="index_head"> WELCOME TO MASAIVERSE EVENT</h1>
+
+    <div class="userPage">
+     <form id="userForm">
+        <input type="text" placeholder="Enter Name" id="name" class="login_input" required ><br>
+        <input type="number" placeholder="Enter Age" id="age" class="login_input" required ><br>
+        <input type="text" placeholder="Enter Place" id="place" class="login_input" required ><br>
+        <input type="text" placeholder="Upload Image" id="image" class="login_input" required ><br>
+        <select name="" id="batch" class="login_input">
+            <option value="">Select Batch</option>
+            <option value="web13">Web-13</option>
+            <option value="web14">Web-14</option>
+            <option value="web15">Web-15</option>
+        </select><br>
+        <select name="" id="profession" class="login_input">
+            <option value="">Select Profession</option>
+            <option value="FSD">FSD</option>
+            <option value="Frontend">Frontend</option>
+            <option value="Backend">Backend</option>
+        </select><br>
+        <input type="submit" value="submit" class="login_btn">
+     </form>
+    </div>
+</body>
+<script src="./scripts/index.js"></script>
+</html>
